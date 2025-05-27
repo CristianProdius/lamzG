@@ -71,7 +71,7 @@ export default function Home() {
           }}
           className="mt-4 md:mt-6 text-base px-4 md:text-lg lg:text-xl xl:text-2xl text-neutral-600 dark:text-neutral-400 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto text-center leading-relaxed"
         >
-          Whether you're a business or a creator — we build and launch
+          Whether you&apos;re a business or a creator — we build and launch
           world-class online courses that sell, scale, and transform lives.
         </motion.p>
       </HeroHighlight>
