@@ -2,6 +2,7 @@
 import { motion } from "motion/react";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { EnhancedStatsDisplay } from "@/components/chart";
 
 export default function Home() {
   const containerVariants = {
@@ -169,6 +170,8 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.div>
+
+      <EnhancedStatsDisplay />
     </div>
   );
 }
