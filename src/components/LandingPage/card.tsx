@@ -9,7 +9,7 @@ export function CardsForLinking() {
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 w-full max-w-5xl mx-auto items-center justify-center p-4">
       <CardContainer className="inter-var flex-1 flex-grow basis-0">
         <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full mx-auto h-auto rounded-xl border">
-          <div className="p-6">
+          <div className="p-6 md:px-12">
             <CardItem
               translateZ="50"
               className="text-xl font-bold text-neutral-600 dark:text-white"
@@ -50,7 +50,7 @@ export function CardsForLinking() {
 
       <CardContainer className="inter-var flex-1 flex-grow basis-0">
         <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full mx-auto h-auto rounded-xl border">
-          <div className="p-6">
+          <div className="p-6 md:px-12">
             <CardItem
               translateZ="50"
               className="text-xl font-bold text-neutral-600 dark:text-white"
