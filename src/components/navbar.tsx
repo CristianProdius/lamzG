@@ -72,7 +72,7 @@ export function Nav() {
               variant="primary"
               className="w-full"
             >
-              Login
+              Buy
             </NavbarButton>
             <NavbarButton
               onClick={() => setIsMobileMenuOpen(false)}

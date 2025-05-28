@@ -1,3 +1,4 @@
+import CourseRevenueCalculator from "@/components/LandingPage/calculator";
 import { CardsForLinking } from "@/components/LandingPage/card";
 import { Hero } from "@/components/LandingPage/hero";
 
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <Hero />
       <CardsForLinking />
+      <CourseRevenueCalculator />
     </>
   );
 }
