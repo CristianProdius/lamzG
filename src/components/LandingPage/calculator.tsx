@@ -12,108 +12,35 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { PlusCircle, X, DollarSign, TrendingUp } from "lucide-react";
-
-// TypeScript interfaces
-interface UpsellTier {
-  id: string;
-  name: string;
-  price: number;
-  conversionRate: number;
-  eligibilityRate: number;
-}
-
-interface RevenueCalculation {
-  baseRevenue: number;
-  totalUpsellRevenue: number;
-  totalRevenue: number;
-  enrollments: number;
-  upsellBreakdown: {
-    tier: UpsellTier;
-    eligibleCustomers: number;
-    conversions: number;
-    revenue: number;
-  }[];
-}
+import { DollarSign, Users, TrendingUp, Calculator } from "lucide-react";
 
 const CourseRevenueCalculator: React.FC = () => {
   const [coursePrice, setCoursePrice] = useState<number>(97);
   const [enrollments, setEnrollments] = useState<number>(100);
-  const [upsellTiers, setUpsellTiers] = useState<UpsellTier[]>([
-    {
-      id: "1",
-      name: "Premium Package",
-      price: 297,
-      conversionRate: 27,
-      eligibilityRate: 40,
-    },
-  ]);
+  const [upsellPrice, setUpsellPrice] = useState<number>(297);
+  const [upsellRate, setUpsellRate] = useState<number>(25);
 
-  const [calculation, setCalculation] = useState<RevenueCalculation | null>(
-    null
-  );
+  const [results, setResults] = useState({
+    baseRevenue: 0,
+    upsellRevenue: 0,
+    totalRevenue: 0,
+    upsellConversions: 0,
+  });
 
-  // Calculate revenue in real-time
   useEffect(() => {
     const baseRevenue = coursePrice * enrollments;
-    let totalUpsellRevenue = 0;
-    const upsellBreakdown: RevenueCalculation["upsellBreakdown"] = [];
+    const upsellConversions = Math.floor(enrollments * (upsellRate / 100));
+    const upsellRevenue = upsellConversions * upsellPrice;
+    const totalRevenue = baseRevenue + upsellRevenue;
 
-    upsellTiers.forEach((tier) => {
-      const eligibleCustomers = Math.floor(
-        enrollments * (tier.eligibilityRate / 100)
-      );
-      const conversions = Math.floor(
-        eligibleCustomers * (tier.conversionRate / 100)
-      );
-      const revenue = conversions * tier.price;
-
-      totalUpsellRevenue += revenue;
-      upsellBreakdown.push({
-        tier,
-        eligibleCustomers,
-        conversions,
-        revenue,
-      });
-    });
-
-    setCalculation({
+    setResults({
       baseRevenue,
-      totalUpsellRevenue,
-      totalRevenue: baseRevenue + totalUpsellRevenue,
-      enrollments,
-      upsellBreakdown,
+      upsellRevenue,
+      totalRevenue,
+      upsellConversions,
     });
-  }, [coursePrice, enrollments, upsellTiers]);
-
-  const addUpsellTier = () => {
-    const newTier: UpsellTier = {
-      id: Date.now().toString(),
-      name: `Upsell ${upsellTiers.length + 1}`,
-      price: 197,
-      conversionRate: 15,
-      eligibilityRate: 30,
-    };
-    setUpsellTiers([...upsellTiers, newTier]);
-  };
-
-  const removeUpsellTier = (id: string) => {
-    setUpsellTiers(upsellTiers.filter((tier) => tier.id !== id));
-  };
-
-  const updateUpsellTier = (
-    id: string,
-    field: keyof UpsellTier,
-    value: string | number
-  ) => {
-    setUpsellTiers(
-      upsellTiers.map((tier) =>
-        tier.id === id ? { ...tier, [field]: value } : tier
-      )
-    );
-  };
+  }, [coursePrice, enrollments, upsellPrice, upsellRate]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
@@ -125,55 +52,53 @@ const CourseRevenueCalculator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 p-4">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-[80vh]  p-4 py-20">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2">
             Course Revenue Calculator
           </h1>
-          <p className="text-lg text-gray-300">
-            Calculate your potential revenue with pricing strategies and upsells
-          </p>
+          <p className="text-gray-300">Simple calculator for course creators</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Input Controls */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Base Course Settings */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Input Section */}
+          <div className="space-y-6">
             <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-white">
                   <DollarSign className="w-5 h-5 text-blue-400" />
-                  Course Pricing
+                  Course Settings
                 </CardTitle>
                 <CardDescription className="text-gray-400">
-                  Set your main course price and enrollment projections
+                  Configure your course pricing and projections
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="course-price" className="text-gray-200">
-                      Course Price ($)
+                      Course Price
                     </Label>
-                    <Input
-                      id="course-price"
-                      type="number"
-                      value={coursePrice}
-                      onChange={(e) => setCoursePrice(Number(e.target.value))}
-                      className="text-lg font-semibold bg-gray-700 border-gray-600 text-white focus:border-blue-400"
-                    />
-                    <div className="px-3">
-                      <Slider
-                        value={[coursePrice]}
-                        onValueChange={(value) => setCoursePrice(value[0])}
-                        max={1000}
-                        min={10}
-                        step={5}
-                        className="w-full"
+                    <div className="flex items-center space-x-2">
+                      <span className="text-gray-400">$</span>
+                      <Input
+                        id="course-price"
+                        type="number"
+                        value={coursePrice}
+                        onChange={(e) => setCoursePrice(Number(e.target.value))}
+                        className="text-lg font-semibold bg-gray-700 border-gray-600 text-white focus:border-blue-400"
                       />
                     </div>
+                    <Slider
+                      value={[coursePrice]}
+                      onValueChange={(value) => setCoursePrice(value[0])}
+                      max={500}
+                      min={10}
+                      step={5}
+                      className="w-full"
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -187,169 +112,90 @@ const CourseRevenueCalculator: React.FC = () => {
                       onChange={(e) => setEnrollments(Number(e.target.value))}
                       className="text-lg font-semibold bg-gray-700 border-gray-600 text-white focus:border-blue-400"
                     />
-                    <div className="px-3">
-                      <Slider
-                        value={[enrollments]}
-                        onValueChange={(value) => setEnrollments(value[0])}
-                        max={1000}
-                        min={10}
-                        step={5}
-                        className="w-full"
-                      />
-                    </div>
+                    <Slider
+                      value={[enrollments]}
+                      onValueChange={(value) => setEnrollments(value[0])}
+                      max={500}
+                      min={10}
+                      step={5}
+                      className="w-full"
+                    />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Upsell Configuration */}
             <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle className="flex items-center gap-2 text-white">
-                      <TrendingUp className="w-5 h-5 text-green-400" />
-                      Upsell Configuration
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">
-                      Configure your upsell products and conversion rates
-                    </CardDescription>
-                  </div>
-                  <Button
-                    onClick={addUpsellTier}
-                    variant="outline"
-                    size="sm"
-                    className="border-gray-600 text-gray-200 hover:bg-gray-700"
-                  >
-                    <PlusCircle className="w-4 h-4 mr-2" />
-                    Add Upsell
-                  </Button>
-                </div>
+                <CardTitle className="flex items-center gap-2 text-white">
+                  <TrendingUp className="w-5 h-5 text-green-400" />
+                  Upsell Settings
+                </CardTitle>
+                <CardDescription className="text-gray-400">
+                  Add an upsell to increase revenue
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {upsellTiers.map((tier, index) => (
-                  <div
-                    key={tier.id}
-                    className="p-4 border border-gray-600 rounded-lg bg-gray-700/50 space-y-4"
-                  >
-                    <div className="flex items-center justify-between">
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-600 text-gray-200"
-                      >
-                        Tier {index + 1}
-                      </Badge>
-                      {upsellTiers.length > 1 && (
-                        <Button
-                          onClick={() => removeUpsellTier(tier.id)}
-                          variant="ghost"
-                          size="sm"
-                          className="text-gray-400 hover:text-red-400 hover:bg-gray-700"
-                        >
-                          <X className="w-4 h-4" />
-                        </Button>
-                      )}
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label className="text-gray-200">Product Name</Label>
-                        <Input
-                          value={tier.name}
-                          onChange={(e) =>
-                            updateUpsellTier(tier.id, "name", e.target.value)
-                          }
-                          className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label className="text-gray-200">Price ($)</Label>
-                        <Input
-                          type="number"
-                          value={tier.price}
-                          onChange={(e) =>
-                            updateUpsellTier(
-                              tier.id,
-                              "price",
-                              Number(e.target.value)
-                            )
-                          }
-                          className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label className="text-gray-200">
-                          Eligibility Rate (%)
-                        </Label>
-                        <Input
-                          type="number"
-                          value={tier.eligibilityRate}
-                          onChange={(e) =>
-                            updateUpsellTier(
-                              tier.id,
-                              "eligibilityRate",
-                              Number(e.target.value)
-                            )
-                          }
-                          max="100"
-                          min="1"
-                          className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
-                        />
-                        <p className="text-xs text-gray-400">
-                          Percentage of customers who see this offer
-                        </p>
-                      </div>
-                      <div className="space-y-2">
-                        <Label className="text-gray-200">
-                          Conversion Rate (%)
-                        </Label>
-                        <Input
-                          type="number"
-                          value={tier.conversionRate}
-                          onChange={(e) =>
-                            updateUpsellTier(
-                              tier.id,
-                              "conversionRate",
-                              Number(e.target.value)
-                            )
-                          }
-                          max="100"
-                          min="1"
-                          className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
-                        />
-                        <p className="text-xs text-gray-400">
-                          Percentage of eligible customers who purchase
-                        </p>
-                      </div>
-                    </div>
+                <div className="space-y-2">
+                  <Label htmlFor="upsell-price" className="text-gray-200">
+                    Upsell Price
+                  </Label>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-gray-400">$</span>
+                    <Input
+                      id="upsell-price"
+                      type="number"
+                      value={upsellPrice}
+                      onChange={(e) => setUpsellPrice(Number(e.target.value))}
+                      className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
+                    />
                   </div>
-                ))}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="upsell-rate" className="text-gray-200">
+                    Conversion Rate (%)
+                  </Label>
+                  <Input
+                    id="upsell-rate"
+                    type="number"
+                    value={upsellRate}
+                    onChange={(e) => setUpsellRate(Number(e.target.value))}
+                    max="100"
+                    min="1"
+                    className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
+                  />
+                  <Slider
+                    value={[upsellRate]}
+                    onValueChange={(value) => setUpsellRate(value[0])}
+                    max={50}
+                    min={5}
+                    step={1}
+                    className="w-full"
+                  />
+                  <p className="text-xs text-gray-400">
+                    Percentage of customers who buy the upsell
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Revenue Display */}
+          {/* Results Section */}
           <div className="space-y-6">
-            {/* Total Revenue Card */}
+            {/* Total Revenue */}
             <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white">
               <CardHeader>
-                <CardTitle className="text-xl">Total Revenue</CardTitle>
+                <CardTitle className="text-2xl">Total Revenue</CardTitle>
                 <CardDescription className="text-blue-100">
                   Your projected earnings
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-4xl font-bold mb-2">
-                  {calculation
-                    ? formatCurrency(calculation.totalRevenue)
-                    : "$0"}
+                <div className="text-5xl font-bold mb-4">
+                  {formatCurrency(results.totalRevenue)}
                 </div>
-                <div className="text-sm text-blue-100">
-                  Based on {enrollments} enrollments
-                </div>
+                <div className="text-blue-100">From {enrollments} students</div>
               </CardContent>
             </Card>
 
@@ -359,97 +205,81 @@ const CourseRevenueCalculator: React.FC = () => {
                 <CardTitle className="text-white">Revenue Breakdown</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {calculation && (
-                  <>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Base Course Revenue</span>
-                      <span className="font-semibold text-white">
-                        {formatCurrency(calculation.baseRevenue)}
-                      </span>
-                    </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Course Sales</span>
+                  <span className="font-semibold text-white">
+                    {formatCurrency(results.baseRevenue)}
+                  </span>
+                </div>
 
-                    <Separator className="bg-gray-600" />
+                <div className="flex justify-between items-center text-sm text-gray-400">
+                  <span>
+                    {enrollments} students × {formatCurrency(coursePrice)}
+                  </span>
+                </div>
 
-                    {calculation.upsellBreakdown.map((upsell, index) => (
-                      <div key={upsell.tier.id} className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-300">
-                            {upsell.tier.name}
-                          </span>
-                          <span className="font-semibold text-white">
-                            {formatCurrency(upsell.revenue)}
-                          </span>
-                        </div>
-                        <div className="text-xs text-gray-400 grid grid-cols-2 gap-2">
-                          <span>{upsell.eligibleCustomers} eligible</span>
-                          <span>{upsell.conversions} conversions</span>
-                        </div>
-                        {index < calculation.upsellBreakdown.length - 1 && (
-                          <Separator className="bg-gray-600" />
-                        )}
-                      </div>
-                    ))}
+                <Separator className="bg-gray-600" />
 
-                    <Separator className="bg-gray-600" />
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Upsell Revenue</span>
+                  <span className="font-semibold text-green-400">
+                    {formatCurrency(results.upsellRevenue)}
+                  </span>
+                </div>
 
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">
-                        Total Upsell Revenue
-                      </span>
-                      <span className="font-semibold text-green-400">
-                        {formatCurrency(calculation.totalUpsellRevenue)}
-                      </span>
-                    </div>
-                  </>
-                )}
+                <div className="flex justify-between items-center text-sm text-gray-400">
+                  <span>
+                    {results.upsellConversions} conversions ×{" "}
+                    {formatCurrency(upsellPrice)}
+                  </span>
+                </div>
+
+                <Separator className="bg-gray-600" />
+
+                <div className="flex justify-between items-center text-lg">
+                  <span className="text-white font-semibold">
+                    Total Revenue
+                  </span>
+                  <span className="font-bold text-white">
+                    {formatCurrency(results.totalRevenue)}
+                  </span>
+                </div>
               </CardContent>
             </Card>
 
-            {/* Key Metrics */}
+            {/* Quick Stats */}
             <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-white">Key Metrics</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {calculation && (
-                  <>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">
-                        Revenue per Customer
-                      </span>
-                      <span className="font-semibold text-white">
-                        {formatCurrency(
-                          calculation.totalRevenue / calculation.enrollments
-                        )}
-                      </span>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-white">
+                      {formatCurrency(results.totalRevenue / enrollments)}
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Upsell Revenue %</span>
-                      <span className="font-semibold text-white">
-                        {(
-                          (calculation.totalUpsellRevenue /
-                            calculation.totalRevenue) *
-                          100
-                        ).toFixed(1)}
-                        %
-                      </span>
+                    <div className="text-sm text-gray-400">
+                      Revenue per Student
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300">
-                        Total Upsell Conversions
-                      </span>
-                      <span className="font-semibold text-white">
-                        {calculation.upsellBreakdown.reduce(
-                          (sum, upsell) => sum + upsell.conversions,
-                          0
-                        )}
-                      </span>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-green-400">
+                      {(
+                        (results.upsellRevenue / results.totalRevenue) *
+                        100
+                      ).toFixed(0)}
+                      %
                     </div>
-                  </>
-                )}
+                    <div className="text-sm text-gray-400">From Upsells</div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Export Button */}
+        <div className="mt-8 text-center">
+          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            Export Results
+          </Button>
         </div>
       </div>
     </div>
