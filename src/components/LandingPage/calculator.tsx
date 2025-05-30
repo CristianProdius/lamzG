@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Separator } from "@/components/ui/separator";
-import { DollarSign, Users, TrendingUp, Calculator } from "lucide-react";
+import { DollarSign, TrendingUp } from "lucide-react";
 
 const CourseRevenueCalculator: React.FC = () => {
   const [coursePrice, setCoursePrice] = useState<number>(97);
