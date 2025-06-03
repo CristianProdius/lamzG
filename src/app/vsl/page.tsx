@@ -1,8 +1,6 @@
 "use client";
 import { ChevronRight } from "lucide-react";
 
-import Footer from "@/components/footer";
-
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";

@@ -1,6 +1,5 @@
 "use client";
 
-import Footer from "@/components/footer";
 import { InlineWidget } from "react-calendly";
 
 export default function Contact() {
