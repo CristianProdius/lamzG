@@ -95,8 +95,33 @@ export const CardBody = ({
   );
 };
 
-export const CardItem = ({
-  as: Tag = "div",
+type CardItemProps<T extends React.ElementType> = {
+  as?: T;
+  children: React.ReactNode;
+  className?: string;
+  translateX?: number | string;
+  translateY?: number | string;
+  translateZ?: number | string;
+  rotateX?: number | string;
+  rotateY?: number | string;
+  rotateZ?: number | string;
+} & Omit<
+  React.ComponentPropsWithoutRef<T>,
+  keyof {
+    as?: T;
+    children: React.ReactNode;
+    className?: string;
+    translateX?: number | string;
+    translateY?: number | string;
+    translateZ?: number | string;
+    rotateX?: number | string;
+    rotateY?: number | string;
+    rotateZ?: number | string;
+  }
+>;
+
+export const CardItem = <T extends React.ElementType = "div">({
+  as,
   children,
   className,
   translateX = 0,
@@ -106,20 +131,10 @@ export const CardItem = ({
   rotateY = 0,
   rotateZ = 0,
   ...rest
-}: {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  translateX?: number | string;
-  translateY?: number | string;
-  translateZ?: number | string;
-  rotateX?: number | string;
-  rotateY?: number | string;
-  rotateZ?: number | string;
-  [key: string]: unknown;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+}: CardItemProps<T>) => {
+  const ref = useRef<HTMLElement>(null);
   const [isMouseEntered] = useMouseEnter();
+  const Component = as || "div";
 
   useEffect(() => {
     handleAnimations();
@@ -135,13 +150,13 @@ export const CardItem = ({
   };
 
   return (
-    <Tag
+    <Component
       ref={ref}
       className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
+      {...(rest as React.ComponentPropsWithoutRef<T>)}
     >
       {children}
-    </Tag>
+    </Component>
   );
 };
 
