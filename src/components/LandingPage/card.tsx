@@ -1,14 +1,20 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
 
 export function CardsForLinking() {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 w-full max-w-5xl mx-auto items-center justify-center p-4 lg:px-16">
       <CardContainer className="inter-var flex-1 flex-grow basis-0">
-        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full mx-auto h-auto rounded-xl border">
+        <CardBody
+          className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full mx-auto h-auto rounded-xl border"
+          onClick={() => router.push("/business")}
+        >
           <div className="p-6 md:px-12">
             <CardItem
               translateZ="50"
@@ -49,7 +55,11 @@ export function CardsForLinking() {
       </CardContainer>
 
       <CardContainer className="inter-var flex-1 flex-grow basis-0">
-        <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full mx-auto h-auto rounded-xl border">
+        <CardBody
+          className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full mx-auto h-auto rounded-xl border
+        "
+          onClick={() => router.push("/creator")}
+        >
           <div className="p-6 md:px-12">
             <CardItem
               translateZ="50"

@@ -274,13 +274,6 @@ const CourseRevenueCalculator: React.FC = () => {
             </Card>
           </div>
         </div>
-
-        {/* Export Button */}
-        <div className="mt-8 text-center">
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-            Export Results
-          </Button>
-        </div>
       </div>
     </div>
   );
