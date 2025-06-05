@@ -24,7 +24,7 @@ export function CardsForLinking() {
             <CardItem
               as="p"
               translateZ="60"
-              className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 w-full text-center"
+              className="text-xl md:text-3xl  font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent mb-2"
             >
               Explore B2B Course Creation Services →
             </CardItem>
@@ -47,7 +47,7 @@ export function CardsForLinking() {
             <CardItem
               as="p"
               translateZ="60"
-              className="text-neutral-500 text-sm mt-2 dark:text-neutral-300 w-full text-center"
+              className="text-xl md:text-3xl  font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent mb-2"
             >
               Join the Course Creation Academy →
             </CardItem>
