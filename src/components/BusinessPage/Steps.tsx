@@ -8,22 +8,22 @@ const steps = [
   {
     icon: <Brain className="w-7 h-7 text-indigo-500" />,
     title: "1. Strategic Planning & Curriculum Design",
-    description: `Before we shoot a single second of footage, we collaborate with you to map out your course’s goals, content structure, and outcomes. This ensures your course aligns with your business model — whether you want to train staff, upsell a product, or convert new leads.`,
+    description: `We help you plan your course, set clear goals, and organize the content to fit your business needs.`,
   },
   {
     icon: <Video className="w-7 h-7 text-fuchsia-500" />,
     title: "2. Full Production – Shooting & Editing",
-    description: `We handle everything from scripting to shooting to editing. You’ll work with a creative director and production team that ensures your course is visually engaging, brand-aligned, and professionally polished. Whether remote or on-site, we adapt to your setup.`,
+    description: `We handle all filming and editing, making sure your course looks great and matches your brand.`,
   },
   {
     icon: <Globe className="w-7 h-7 text-blue-500" />,
     title: "3. Hosting & Delivery",
-    description: `We don’t just give you videos — we give you a full course experience. We’ll help you choose the best platform (or integrate with your existing tools), organize your modules, structure the learning journey, and create a frictionless student experience.`,
+    description: `We set up your course online, organize the lessons, and make it easy for students to learn.`,
   },
   {
     icon: <Rocket className="w-7 h-7 text-pink-500" />,
     title: "4. Marketing & Scaling",
-    description: `Once your course is live, we’ll help you build a marketing system that actually gets results. From organic content to email automation to sales funnels, we apply the same strategies that have generated thousands of enrollments for our own in-house courses.`,
+    description: `We help you promote your course and grow your audience using proven marketing strategies.`,
   },
 ];
 
