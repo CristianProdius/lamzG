@@ -28,7 +28,7 @@ export function CourseShowcase() {
   return (
     <section className="max-w-4xl mx-auto px-4 py-16">
       <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-14 tracking-tight text-neutral-800 dark:text-white">
-        Here’s how we did it
+        Here’s how we do it
       </h2>
       <div className="flex flex-col gap-12">
         {sections.map((s) => (
