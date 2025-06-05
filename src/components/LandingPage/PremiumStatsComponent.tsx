@@ -1,4 +1,5 @@
 import React from "react";
+import CourseRevenueCalculator from "./calculator";
 
 type StatsCardProps = {
   number: string;
@@ -52,38 +53,41 @@ const PremiumStatsComponent = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
-      {/* Header Section */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 text-center font-sans font-bold leading-[1.3]">
-          Our Impact
-        </h2>
-        <p className="text-lg md:text-xl text-neutral-500 dark:text-gray-400 max-w-2xl mx-auto">
-          Transforming education across the globe with innovative course
-          creation services
-        </p>
-      </div>
+    <div className="bg-[linear-gradient(to_bottom,#000,#200D42_45%,#4f21A1_65%,#a46edb_82%)] pt-4">
+      <div className="w-full max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl  text-center font-sans font-bold leading-[1.3]">
+            Our Impact
+          </h2>
+          <p className="text-lg md:text-xl text-neutral-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Transforming education across the globe with innovative course
+            creation services
+          </p>
+        </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-        {stats.map((stat, index) => (
-          <StatsCard
-            key={index}
-            number={stat.number}
-            label={stat.label}
-            description={stat.description}
-          />
-        ))}
-      </div>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+          {stats.map((stat, index) => (
+            <StatsCard
+              key={index}
+              number={stat.number}
+              label={stat.label}
+              description={stat.description}
+            />
+          ))}
+        </div>
 
-      {/* Bottom Accent */}
-      <div className="mt-12 text-center">
-        <div className="inline-flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
-          <span>Trusted by educators worldwide</span>
-          <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+        {/* Bottom Accent */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+            <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+            <span>Trusted by educators worldwide</span>
+            <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+          </div>
         </div>
       </div>
+      <CourseRevenueCalculator />
     </div>
   );
 };
