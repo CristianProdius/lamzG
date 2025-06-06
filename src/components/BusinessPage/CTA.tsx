@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 export const CTA = () => {
@@ -9,9 +10,11 @@ export const CTA = () => {
           Ready to Create a Course That Grows Your Business?
         </h2>
 
-        <button className="bg-white text-black sm:text-xl py-3 px-4 sm:py-5 sm:px-9 rounded-lg font-semibold inline-flex items-center justify-center gap-1 transform transition-transform duration-200 hover:scale-105 mt-12">
-          <span>Let’s talk about what’s possible.</span>
-        </button>
+        <Link href="/creator">
+          <button className="bg-white text-black sm:text-xl py-3 px-4 sm:py-5 sm:px-9 rounded-lg font-semibold inline-flex items-center justify-center gap-1 transform transition-transform duration-200 hover:scale-105 mt-12">
+            <span>Let’s talk about what’s possible.</span>
+          </button>
+        </Link>
       </div>
     </div>
   );

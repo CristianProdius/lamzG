@@ -4,6 +4,7 @@ import { HeroHighlight, Highlight } from "../ui/hero-highlight";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Link } from "lucide-react";
 
 export function Hero() {
   return (
@@ -71,9 +72,11 @@ export function Hero() {
         </div>
 
         <div className="flex justify-center my-6">
-          <Button size="lg" className="text-lg px-8 py-4">
-            Let’s talk about what’s possible
-          </Button>
+          <Link href="/creator">
+            <Button size="lg" className="text-lg px-8 py-4">
+              Let’s talk about what’s possible
+            </Button>
+          </Link>
         </div>
       </HeroHighlight>
       <div

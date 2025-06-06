@@ -11,7 +11,7 @@ import OnlineEducationGraph from "@/components/CreatorPage/OnlineEducationGraph"
 import TeamMember from "@/components/CreatorPage/TeamMember";
 import { Testimonials } from "@/components/CreatorPage/Testimonials";
 import Faq from "@/components/CreatorPage/faq";
-import { CTA } from "@/components/CreatorPage/cta";
+
 import Modal from "@/components/CreatorPage/modal";
 
 export default function Creator() {
@@ -32,7 +32,7 @@ export default function Creator() {
       <TeamMember />
       <Testimonials />
       <Faq />
-      <CTA onOpenModal={handleModalOpen} />
+
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
