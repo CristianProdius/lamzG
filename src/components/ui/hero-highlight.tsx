@@ -27,6 +27,18 @@ export const HeroHighlight = ({
     },
   };
 
+  // Mobile-optimized dot patterns (smaller dots)
+  const mobileDotPatterns = {
+    light: {
+      default: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none'%3E%3Ccircle fill='%23d4d4d4' id='pattern-circle' cx='8' cy='8' r='1.5'%3E%3C/circle%3E%3C/svg%3E")`,
+      hover: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none'%3E%3Ccircle fill='%236366f1' id='pattern-circle' cx='8' cy='8' r='1.5'%3E%3C/circle%3E%3C/svg%3E")`,
+    },
+    dark: {
+      default: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none'%3E%3Ccircle fill='%23404040' id='pattern-circle' cx='8' cy='8' r='1.5'%3E%3C/circle%3E%3C/svg%3E")`,
+      hover: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='12' height='12' fill='none'%3E%3Ccircle fill='%238183f4' id='pattern-circle' cx='8' cy='8' r='1.5'%3E%3C/circle%3E%3C/svg%3E")`,
+    },
+  };
+
   function handleMouseMove({
     currentTarget,
     clientX,
@@ -38,28 +50,56 @@ export const HeroHighlight = ({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+
+  function handleTouchMove(event: React.TouchEvent<HTMLDivElement>) {
+    if (!event.currentTarget || event.touches.length === 0) return;
+    const { left, top } = event.currentTarget.getBoundingClientRect();
+    const touch = event.touches[0];
+
+    mouseX.set(touch.clientX - left);
+    mouseY.set(touch.clientY - top);
+  }
+
   return (
     <div
       className={cn(
-        "group relative flex h-[40rem] w-full items-center justify-center bg-white dark:bg-black",
+        "group relative flex min-h-screen sm:h-[40rem] w-full items-center justify-center bg-white dark:bg-black px-4 sm:px-6 lg:px-8",
         containerClassName
       )}
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
     >
+      {/* Default dot patterns - Desktop */}
       <div
-        className="pointer-events-none absolute inset-0 dark:hidden"
+        className="pointer-events-none absolute inset-0 dark:hidden hidden sm:block"
         style={{
           backgroundImage: dotPatterns.light.default,
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 hidden dark:block"
+        className="pointer-events-none absolute inset-0 hidden dark:block sm:dark:block"
         style={{
           backgroundImage: dotPatterns.dark.default,
         }}
       />
+
+      {/* Default dot patterns - Mobile */}
+      <div
+        className="pointer-events-none absolute inset-0 dark:hidden block sm:hidden"
+        style={{
+          backgroundImage: mobileDotPatterns.light.default,
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 hidden dark:block dark:block sm:hidden"
+        style={{
+          backgroundImage: mobileDotPatterns.dark.default,
+        }}
+      />
+
+      {/* Hover effect patterns - Desktop */}
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 dark:hidden"
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 dark:hidden hidden sm:block"
         style={{
           backgroundImage: dotPatterns.light.hover,
           WebkitMaskImage: useMotionTemplate`
@@ -79,7 +119,7 @@ export const HeroHighlight = ({
         }}
       />
       <motion.div
-        className="pointer-events-none absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 dark:block"
+        className="pointer-events-none absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 dark:block sm:dark:block"
         style={{
           backgroundImage: dotPatterns.dark.hover,
           WebkitMaskImage: useMotionTemplate`
@@ -99,7 +139,65 @@ export const HeroHighlight = ({
         }}
       />
 
-      <div className={cn("relative z-20", className)}>{children}</div>
+      {/* Touch effect patterns - Mobile */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-active:opacity-100 dark:hidden block sm:hidden"
+        style={{
+          backgroundImage: mobileDotPatterns.light.hover,
+          WebkitMaskImage: useMotionTemplate`
+            radial-gradient(
+              150px circle at ${mouseX}px ${mouseY}px,
+              black 0%,
+              transparent 100%
+            )
+          `,
+          maskImage: useMotionTemplate`
+            radial-gradient(
+              150px circle at ${mouseX}px ${mouseY}px,
+              black 0%,
+              transparent 100%
+            )
+          `,
+        }}
+      />
+      <motion.div
+        className="pointer-events-none absolute inset-0 hidden opacity-0 transition duration-300 group-active:opacity-100 dark:block dark:block sm:hidden"
+        style={{
+          backgroundImage: mobileDotPatterns.dark.hover,
+          WebkitMaskImage: useMotionTemplate`
+            radial-gradient(
+              150px circle at ${mouseX}px ${mouseY}px,
+              black 0%,
+              transparent 100%
+            )
+          `,
+          maskImage: useMotionTemplate`
+            radial-gradient(
+              150px circle at ${mouseX}px ${mouseY}px,
+              black 0%,
+              transparent 100%
+            )
+          `,
+        }}
+      />
+
+      {/* Responsive gradient overlay */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.6) 90%, rgba(0,0,0,0.8) 100%)",
+        }}
+      />
+
+      <div
+        className={cn(
+          "relative z-20 w-full max-w-7xl mx-auto text-center",
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 };
@@ -130,7 +228,7 @@ export const Highlight = ({
         display: "inline",
       }}
       className={cn(
-        `relative inline-block rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 px-1 pb-1 dark:from-indigo-500 dark:to-purple-500`,
+        `relative inline-block rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 px-1 pb-1 dark:from-indigo-500 dark:to-purple-500 text-sm sm:text-base`,
         className
       )}
     >
