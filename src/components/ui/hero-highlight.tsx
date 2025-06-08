@@ -91,7 +91,7 @@ export const HeroHighlight = ({
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 hidden dark:block dark:block sm:hidden"
+        className="pointer-events-none absolute inset-0 hidden dark:block sm:hidden"
         style={{
           backgroundImage: mobileDotPatterns.dark.default,
         }}
@@ -161,7 +161,7 @@ export const HeroHighlight = ({
         }}
       />
       <motion.div
-        className="pointer-events-none absolute inset-0 hidden opacity-0 transition duration-300 group-active:opacity-100 dark:block dark:block sm:hidden"
+        className="pointer-events-none absolute inset-0 hidden opacity-0 transition duration-300 group-active:opacity-10 dark:block sm:hidden"
         style={{
           backgroundImage: mobileDotPatterns.dark.hover,
           WebkitMaskImage: useMotionTemplate`

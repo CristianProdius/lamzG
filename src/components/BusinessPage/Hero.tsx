@@ -17,7 +17,7 @@ export function Hero() {
           We Build Strategic Courses That
           <br />
           <span className="sm:hidden"> </span>
-          <Highlight className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          <Highlight className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
             Grow Your Business.
           </Highlight>
         </motion.h1>
