@@ -228,11 +228,15 @@ export const Highlight = ({
         display: "inline",
       }}
       className={cn(
-        `relative inline-block rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 px-1 pb-1 dark:from-indigo-500 dark:to-purple-500 text-sm sm:text-base`,
+        `relative inline-block rounded-lg bg-gradient-to-r from-white/90 via-fuchsia-400 to-white/90 px-1 pb-1 text-fuchsia-800 dark:from-black/80 dark:via-fuchsia-400 dark:to-black/80 dark:text-fuchsia-100 text-sm sm:text-base shadow-[0_2px_8px_0_rgba(120,0,120,0.10)]`,
         className
       )}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
+      <span
+        aria-hidden
+        className="absolute inset-0 rounded-lg ring-2 ring-fuchsia-400/40 dark:ring-fuchsia-400/60 pointer-events-none"
+      />
     </motion.span>
   );
 };

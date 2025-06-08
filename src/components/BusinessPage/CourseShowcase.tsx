@@ -27,7 +27,7 @@ const sections = [
 
 export function CourseShowcase() {
   return (
-    <div className="relative bg-[linear-gradient(to_bottom,#000,#200D42_45%,#4f21A1_65%,#a46edb_82%)]">
+    <div className="relative bg-[linear-gradient(to_bottom,#000,#200D42_45%,#4f21A1_65%)]">
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="flex flex-col gap-8 sm:gap-12 lg:gap-16">
           {sections.map((s) => (
@@ -84,13 +84,15 @@ export function CourseShowcase() {
                   </div>
                 </CardContent>
 
-                <CardFooter className="p-4 sm:p-6 md:p-8 lg:p-10 pt-0 flex justify-center sm:justify-end">
-                  <Link href="/creator" className="w-full sm:w-auto">
+                <CardFooter className="p-4 sm:p-6 pt-0 flex justify-center">
+                  <Link
+                    href="/creator"
+                    className="w-full sm:w-auto max-w-sm sm:max-w-none"
+                  >
                     <Button
-                      size="lg"
                       className="
                       w-full sm:w-auto
-                      text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold
+                      text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 font-medium sm:font-semibold
                       bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-pink-500
                       text-white shadow-lg
                       rounded-lg sm:rounded-xl
@@ -99,7 +101,8 @@ export function CourseShowcase() {
                       ring-2 ring-fuchsia-200/40
                       focus:ring-4 focus:ring-pink-300/60
                       active:scale-95
-                      min-h-[48px] sm:min-h-[52px]
+                      h-10 sm:h-12
+                      text-center
                     "
                     >
                       {s.cta}

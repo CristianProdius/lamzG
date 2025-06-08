@@ -29,7 +29,7 @@ const steps = [
 
 export function WhatWeTakeCareOf() {
   return (
-    <div className="relative bg-[linear-gradient(to_top,#000,#200D42_45%,#4f21A1_65%,#a46edb_82%)]">
+    <div className="relative bg-[linear-gradient(to_top,#000,#200D42_45%,#4f21A1_65%)]">
       <section className="max-w-5xl mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-6 tracking-tight text-neutral-800 dark:text-white">
           What we take care of:

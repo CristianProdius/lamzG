@@ -147,15 +147,15 @@ const Features = () => {
                   <div className="mt-8 grid grid-cols-2 gap-4 lg:gap-6">
                     <div className="bg-green-600/10 border border-green-600/30 rounded-xl p-4">
                       <div className="text-2xl font-bold text-green-400">
-                        $50K+
+                        500+
                       </div>
                       <div className="text-sm text-gray-400">
-                        Monthly Revenue
+                        Enrollments in 1st Month
                       </div>
                     </div>
                     <div className="bg-blue-600/10 border border-blue-600/30 rounded-xl p-4">
                       <div className="text-2xl font-bold text-blue-400">
-                        1000+
+                        2470+
                       </div>
                       <div className="text-sm text-gray-400">
                         Students Enrolled

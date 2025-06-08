@@ -51,7 +51,7 @@ const CourseRevenueCalculator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[80vh]  p-4 py-20">
+    <div className="min-h-[80vh] p-4 py-20">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -61,10 +61,10 @@ const CourseRevenueCalculator: React.FC = () => {
           <p className="text-gray-300">Simple calculator for course creators</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
           {/* Input Section */}
-          <div className="space-y-6">
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
+          <div className="flex flex-col space-y-8">
+            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700 flex-1">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-white">
                   <DollarSign className="w-5 h-5 text-blue-400" />
@@ -124,7 +124,7 @@ const CourseRevenueCalculator: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
+            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700 flex-1">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-white">
                   <TrendingUp className="w-5 h-5 text-green-400" />
@@ -181,16 +181,16 @@ const CourseRevenueCalculator: React.FC = () => {
           </div>
 
           {/* Results Section */}
-          <div className="space-y-6">
+          <div className="flex flex-col space-y-8">
             {/* Total Revenue */}
-            <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white">
+            <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white flex-1">
               <CardHeader>
                 <CardTitle className="text-2xl">Total Revenue</CardTitle>
                 <CardDescription className="text-blue-100">
                   Your projected earnings
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex flex-col justify-center h-full">
                 <div className="text-5xl font-bold mb-4">
                   {formatCurrency(results.totalRevenue)}
                 </div>
@@ -199,7 +199,7 @@ const CourseRevenueCalculator: React.FC = () => {
             </Card>
 
             {/* Revenue Breakdown */}
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
+            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700 flex-1">
               <CardHeader>
                 <CardTitle className="text-white">Revenue Breakdown</CardTitle>
               </CardHeader>
@@ -242,32 +242,6 @@ const CourseRevenueCalculator: React.FC = () => {
                   <span className="font-bold text-white">
                     {formatCurrency(results.totalRevenue)}
                   </span>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Quick Stats */}
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700">
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div>
-                    <div className="text-2xl font-bold text-white">
-                      {formatCurrency(results.totalRevenue / enrollments)}
-                    </div>
-                    <div className="text-sm text-gray-400">
-                      Revenue per Student
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-green-400">
-                      {(
-                        (results.upsellRevenue / results.totalRevenue) *
-                        100
-                      ).toFixed(0)}
-                      %
-                    </div>
-                    <div className="text-sm text-gray-400">From Upsells</div>
-                  </div>
                 </div>
               </CardContent>
             </Card>

@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function Hero() {
   return (
-    <HeroHighlight>
+    <div className="py-2 md:py-16 w-full  bg-[linear-gradient(to_bottom,#a46edb,#4f21A1_45%,#200D42_65%,#000_82%)] relative flex flex-col items-center justify-center antialiased">
       <div className="flex flex-col items-center justify-center min-h-[80vh] sm:min-h-[60vh] px-4 sm:px-6 lg:px-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -17,9 +17,9 @@ export function Hero() {
           We Build Strategic Courses That
           <br />
           <span className="sm:hidden"> </span>
-          <Highlight className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold ">
             Grow Your Business.
-          </Highlight>
+          </span>
         </motion.h1>
 
         <motion.p
@@ -46,9 +46,6 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="relative text-center w-full max-w-6xl mx-auto"
         >
-          {/* Background Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-3xl rounded-full transform scale-150 opacity-60" />
-
           <div className="relative z-10">
             <div className="mb-8">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent tracking-tight">
@@ -102,6 +99,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-    </HeroHighlight>
+    </div>
   );
 }
