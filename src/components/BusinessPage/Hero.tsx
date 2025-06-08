@@ -55,7 +55,7 @@ export function Hero() {
                 Stats that back us up
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto font-medium leading-relaxed px-4">
-                We're not only about fancy, good-looking courses — we{" "}
+                We&apos;re not only about fancy, good-looking courses — we{" "}
                 <span className="text-white font-semibold">
                   scale businesses through education.
                 </span>
