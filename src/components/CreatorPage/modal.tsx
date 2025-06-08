@@ -66,7 +66,7 @@ const Modal = ({
 
     if (domain) {
       // Check for common typos
-      const typos = {
+      const typos: { [key: string]: string } = {
         "gmai.com": "gmail.com",
         "gmial.com": "gmail.com",
         "gmail.co": "gmail.com",
