@@ -55,13 +55,6 @@ const Modal = ({
     }
 
     // Check for common typos in domains
-    const commonDomains = [
-      "gmail.com",
-      "yahoo.com",
-      "outlook.com",
-      "hotmail.com",
-      "icloud.com",
-    ];
     const domain = email.split("@")[1]?.toLowerCase();
 
     if (domain) {
