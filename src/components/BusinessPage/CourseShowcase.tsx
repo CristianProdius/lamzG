@@ -86,7 +86,7 @@ export function CourseShowcase() {
 
                 <CardFooter className="p-4 sm:p-6 pt-0 flex justify-center">
                   <Link
-                    href="/creator"
+                    href="https://calendly.com/lamz/meeting"
                     className="w-full sm:w-auto max-w-sm sm:max-w-none"
                   >
                     <Button
