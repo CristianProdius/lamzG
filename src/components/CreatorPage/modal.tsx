@@ -82,13 +82,8 @@ const Modal = ({
       return "Full name is required";
     }
 
-    if (name.trim().length < 2) {
+    if (name.trim().length < 1) {
       return "Please enter your full name";
-    }
-
-    // Check if it contains at least one space (first and last name)
-    if (!name.trim().includes(" ")) {
-      return "Please enter your first and last name";
     }
 
     return null;
