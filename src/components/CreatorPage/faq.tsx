@@ -1,5 +1,5 @@
 "use client";
-import { Plus, Minus, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -149,7 +149,7 @@ const Faq = () => {
               Still have questions?
             </h3>
             <p className="text-gray-600 mb-8 text-lg">
-              We're here to help! Schedule a free consultation to discuss your
+              We are here to help! Schedule a free consultation to discuss your
               course creation journey.
             </p>
             <Link

@@ -78,7 +78,7 @@ const Guarantee = ({ onOpenModal }: GuaranteeProps) => {
                   </span>
                 </h2>
                 <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
-                  Discover the system that's helping course creators build
+                  Discover the system that is helping course creators build
                   sustainable, scalable businesses
                 </p>
               </div>

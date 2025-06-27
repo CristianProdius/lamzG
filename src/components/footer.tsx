@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -8,12 +9,12 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <span className="text-sm text-gray-600">
               © 2025{" "}
-              <a
+              <Link
                 href="/"
                 className="font-medium text-gray-900 hover:text-gray-700 transition-colors"
               >
                 CCA
-              </a>
+              </Link>
               <span className="ml-1">All Rights Reserved.</span>
             </span>
           </div>

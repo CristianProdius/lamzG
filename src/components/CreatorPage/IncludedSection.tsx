@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Check } from "lucide-react";
 
 // Create a reusable card component with subtle hover effect
