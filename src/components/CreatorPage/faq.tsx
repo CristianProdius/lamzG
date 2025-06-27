@@ -1,8 +1,7 @@
 "use client";
-import { Plus } from "lucide-react";
-import { Minus } from "lucide-react";
+import { Plus, Minus, ChevronDown } from "lucide-react";
+import Link from "next/link";
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
   {
@@ -57,49 +56,112 @@ const items = [
 const AccordionItem = ({
   question,
   answer,
+  isOpen,
+  onClick,
 }: {
   question: string;
   answer: string;
+  isOpen: boolean;
+  onClick: () => void;
 }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <div
-      className="py-7 border-b border-white/30"
-      onClick={() => setIsOpen(!isOpen)}
-    >
-      <div className="flex items-center ">
-        <span className="flex-1 text-lg font-bold">{question}</span>
-        {isOpen ? <Minus /> : <Plus />}
+    <div className="border-b border-gray-200 last:border-b-0 group">
+      <button
+        className="w-full py-6 text-left flex items-center justify-between hover:text-purple-600 transition-colors duration-300"
+        onClick={onClick}
+      >
+        <span className="flex-1 text-lg font-semibold text-gray-900 group-hover:text-purple-600 pr-4 transition-colors">
+          {question}
+        </span>
+        <div
+          className={`
+          w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0
+          transition-all duration-300
+          ${
+            isOpen
+              ? "bg-gradient-to-br from-purple-600 to-purple-700 text-white rotate-180"
+              : "bg-gray-100 text-gray-600 group-hover:bg-purple-100 group-hover:text-purple-600"
+          }
+        `}
+        >
+          <ChevronDown size={20} />
+        </div>
+      </button>
+
+      <div
+        style={{
+          maxHeight: isOpen ? "200px" : "0",
+          opacity: isOpen ? 1 : 0,
+          transition: "all 0.3s ease-in-out",
+          overflow: "hidden",
+        }}
+      >
+        <p className="text-gray-600 leading-relaxed pb-6">{answer}</p>
       </div>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0, marginTop: 0 }}
-            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
-            exit={{ opacity: 0, height: 0, marginTop: 0 }}
-          >
-            {answer}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
 
 const Faq = () => {
+  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+
   return (
-    <div className="bg-black text-white bg-gradient-to-b from-[#5d2ca8] to-black py-[72px] px-4 sm:py-24">
-      <div className="container mx-auto">
-        <h2 className="text-center text-5xl sm:text-6xl font-bold tracking-tighter">
-          Frequently asked questions
-        </h2>
-        <div className="mt-12 max-w-5xl mx-auto">
-          {items.map(({ question, answer }, index) => (
-            <AccordionItem key={index} question={question} answer={answer} />
-          ))}
+    <section className="bg-gradient-to-b from-white to-gray-50 py-24 px-4">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center bg-purple-100 border border-purple-200 rounded-full px-4 py-2 mb-8">
+            <span className="text-sm font-semibold text-purple-700">FAQ</span>
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+            Frequently Asked
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800">
+              {" "}
+              Questions
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Everything you need to know about our course creation program
+          </p>
+        </div>
+
+        {/* FAQ Accordion */}
+        <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12">
+          <div className="divide-y divide-gray-200">
+            {items.map(({ question, answer }, index) => (
+              <AccordionItem
+                key={index}
+                question={question}
+                answer={answer}
+                isOpen={openIndex === index}
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center bg-gradient-to-br from-purple-50 to-white rounded-2xl p-8 lg:p-10 border border-purple-100">
+          <div className="max-w-2xl mx-auto">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6">
+              <span className="text-3xl">💬</span>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Still have questions?
+            </h3>
+            <p className="text-gray-600 mb-8 text-lg">
+              We're here to help! Schedule a free consultation to discuss your
+              course creation journey.
+            </p>
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Get Your Questions Answered →
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

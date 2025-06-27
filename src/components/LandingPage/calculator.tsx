@@ -50,44 +50,48 @@ const CourseRevenueCalculator: React.FC = () => {
     }).format(amount);
   };
 
+  // Custom slider styles
+  const sliderStyles =
+    "[&>span:first-child]:bg-gray-200 [&>span:first-child>span]:bg-black [&_[role=slider]]:bg-black [&_[role=slider]]:border-black [&_[role=slider]]:shadow-md";
+
   return (
-    <div className="min-h-[80vh] p-4 py-20">
+    <div className="min-h-[80vh] p-4 py-20 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Course Revenue Calculator
           </h1>
-          <p className="text-gray-300">Simple calculator for course creators</p>
+          <p className="text-gray-600">Simple calculator for course creators</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
           {/* Input Section */}
           <div className="flex flex-col space-y-8">
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700 flex-1">
+            <Card className="border shadow-lg bg-white border-gray-200 flex-1">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <DollarSign className="w-5 h-5 text-blue-400" />
+                <CardTitle className="flex items-center gap-2 text-gray-900">
+                  <DollarSign className="w-5 h-5 text-blue-600" />
                   Course Settings
                 </CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardDescription className="text-gray-600">
                   Configure your course pricing and projections
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="course-price" className="text-gray-200">
+                    <Label htmlFor="course-price" className="text-gray-700">
                       Course Price
                     </Label>
                     <div className="flex items-center space-x-2">
-                      <span className="text-gray-400">$</span>
+                      <span className="text-gray-500">$</span>
                       <Input
                         id="course-price"
                         type="number"
                         value={coursePrice}
                         onChange={(e) => setCoursePrice(Number(e.target.value))}
-                        className="text-lg font-semibold bg-gray-700 border-gray-600 text-white focus:border-blue-400"
+                        className="text-lg font-semibold bg-white border-gray-300 text-gray-900 focus:border-blue-500"
                       />
                     </div>
                     <Slider
@@ -96,12 +100,12 @@ const CourseRevenueCalculator: React.FC = () => {
                       max={500}
                       min={10}
                       step={5}
-                      className="w-full"
+                      className={`w-full ${sliderStyles}`}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="enrollments" className="text-gray-200">
+                    <Label htmlFor="enrollments" className="text-gray-700">
                       Expected Enrollments
                     </Label>
                     <Input
@@ -109,7 +113,7 @@ const CourseRevenueCalculator: React.FC = () => {
                       type="number"
                       value={enrollments}
                       onChange={(e) => setEnrollments(Number(e.target.value))}
-                      className="text-lg font-semibold bg-gray-700 border-gray-600 text-white focus:border-blue-400"
+                      className="text-lg font-semibold bg-white border-gray-300 text-gray-900 focus:border-blue-500"
                     />
                     <Slider
                       value={[enrollments]}
@@ -117,42 +121,42 @@ const CourseRevenueCalculator: React.FC = () => {
                       max={500}
                       min={10}
                       step={5}
-                      className="w-full"
+                      className={`w-full ${sliderStyles}`}
                     />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700 flex-1">
+            <Card className="border shadow-lg bg-white border-gray-200 flex-1">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <TrendingUp className="w-5 h-5 text-green-400" />
+                <CardTitle className="flex items-center gap-2 text-gray-900">
+                  <TrendingUp className="w-5 h-5 text-green-600" />
                   Upsell Settings
                 </CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardDescription className="text-gray-600">
                   Add an upsell to increase revenue
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="upsell-price" className="text-gray-200">
+                  <Label htmlFor="upsell-price" className="text-gray-700">
                     Upsell Price
                   </Label>
                   <div className="flex items-center space-x-2">
-                    <span className="text-gray-400">$</span>
+                    <span className="text-gray-500">$</span>
                     <Input
                       id="upsell-price"
                       type="number"
                       value={upsellPrice}
                       onChange={(e) => setUpsellPrice(Number(e.target.value))}
-                      className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
+                      className="bg-white border-gray-300 text-gray-900 focus:border-blue-500"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="upsell-rate" className="text-gray-200">
+                  <Label htmlFor="upsell-rate" className="text-gray-700">
                     Conversion Rate (%)
                   </Label>
                   <Input
@@ -162,7 +166,7 @@ const CourseRevenueCalculator: React.FC = () => {
                     onChange={(e) => setUpsellRate(Number(e.target.value))}
                     max="100"
                     min="1"
-                    className="bg-gray-700 border-gray-600 text-white focus:border-blue-400"
+                    className="bg-white border-gray-300 text-gray-900 focus:border-blue-500"
                   />
                   <Slider
                     value={[upsellRate]}
@@ -170,9 +174,9 @@ const CourseRevenueCalculator: React.FC = () => {
                     max={50}
                     min={5}
                     step={1}
-                    className="w-full"
+                    className={`w-full ${sliderStyles}`}
                   />
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-500">
                     Percentage of customers who buy the upsell
                   </p>
                 </div>
@@ -183,7 +187,7 @@ const CourseRevenueCalculator: React.FC = () => {
           {/* Results Section */}
           <div className="flex flex-col space-y-8">
             {/* Total Revenue */}
-            <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white flex-1">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 text-white flex-1">
               <CardHeader>
                 <CardTitle className="text-2xl">Total Revenue</CardTitle>
                 <CardDescription className="text-blue-100">
@@ -199,47 +203,49 @@ const CourseRevenueCalculator: React.FC = () => {
             </Card>
 
             {/* Revenue Breakdown */}
-            <Card className="border-0 shadow-2xl bg-gray-800/90 backdrop-blur border-gray-700 flex-1">
+            <Card className="border shadow-lg bg-white border-gray-200 flex-1">
               <CardHeader>
-                <CardTitle className="text-white">Revenue Breakdown</CardTitle>
+                <CardTitle className="text-gray-900">
+                  Revenue Breakdown
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Course Sales</span>
-                  <span className="font-semibold text-white">
+                  <span className="text-gray-700">Course Sales</span>
+                  <span className="font-semibold text-gray-900">
                     {formatCurrency(results.baseRevenue)}
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center text-sm text-gray-400">
+                <div className="flex justify-between items-center text-sm text-gray-500">
                   <span>
                     {enrollments} students × {formatCurrency(coursePrice)}
                   </span>
                 </div>
 
-                <Separator className="bg-gray-600" />
+                <Separator className="bg-gray-200" />
 
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Upsell Revenue</span>
-                  <span className="font-semibold text-green-400">
+                  <span className="text-gray-700">Upsell Revenue</span>
+                  <span className="font-semibold text-green-600">
                     {formatCurrency(results.upsellRevenue)}
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center text-sm text-gray-400">
+                <div className="flex justify-between items-center text-sm text-gray-500">
                   <span>
                     {results.upsellConversions} conversions ×{" "}
                     {formatCurrency(upsellPrice)}
                   </span>
                 </div>
 
-                <Separator className="bg-gray-600" />
+                <Separator className="bg-gray-200" />
 
                 <div className="flex justify-between items-center text-lg">
-                  <span className="text-white font-semibold">
+                  <span className="text-gray-900 font-semibold">
                     Total Revenue
                   </span>
-                  <span className="font-bold text-white">
+                  <span className="font-bold text-gray-900">
                     {formatCurrency(results.totalRevenue)}
                   </span>
                 </div>

@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import {
   Settings,
   Users,
@@ -12,20 +11,21 @@ import {
   Globe,
   LineChart,
 } from "lucide-react";
+import Link from "next/link";
 
 const successStories = [
   {
-    videoId: "1052300064", // Replace with your Vimeo video ID
-    achievement: "From 0 to 7,7920+ Students in Just 3 Months",
+    videoId: "1052300064",
+    achievement: "From 0 to 7,920+ Students in Just 3 Months",
     thumbnail: "/thumbnail1.webp",
   },
   {
-    videoId: "1052300098", // Replace with your Vimeo video ID
+    videoId: "1052300098",
     achievement: "$1000/M WITHOUT SHOWING MY FACE",
     thumbnail: "/thumbnail2.webp",
   },
   {
-    videoId: "1052300130", // Replace with your Vimeo video ID
+    videoId: "1052300130",
     achievement: "SET IT & FORGET IT",
     thumbnail: "/thumbnail3.webp",
   },
@@ -116,70 +116,95 @@ const SuccessSection = () => {
       document.body.removeChild(script);
     };
   }, []);
+
   return (
-    <section className="bg-black text-white bg-gradient-to-b from-[#5d2ca8] to-black px-4">
-      <div className="container mx-auto max-w-5xl">
-        <div className="pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="py-12"
-          >
-            <h3 className="text-center text-5xl sm:text-6xl font-bold tracking-tighter mb-16">
-              Recent Results We&apos;ve Gotten For Creators & Freelancers Just
-              Like You:
-            </h3>
-            <div className="grid sm:grid-cols-3 gap-8">
+    <section className="bg-white to-white px-4 py-24">
+      <div className="container mx-auto max-w-6xl">
+        {/* Success Stories Section */}
+        <div className="pb-32">
+          <div className="py-12">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center bg-purple-100 border border-purple-200 rounded-full px-4 py-2 mb-8 transition-all duration-300 hover:bg-purple-200">
+                <span className="text-sm font-semibold text-purple-700">
+                  ✨ SUCCESS STORIES
+                </span>
+              </div>
+              <h3 className="text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+                Recent Results We&apos;ve Achieved For
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800">
+                  Creators & Freelancers
+                </span>{" "}
+                Just Like You
+              </h3>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
               {successStories.map((story, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="flex flex-col gap-6"
-                >
-                  <div className="rounded-xl overflow-hidden bg-[#3b1c6a] shadow-lg">
-                    <VimeoEmbed videoId={story.videoId} />
+                <div key={index} className="group transition-all duration-300">
+                  <div className="rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 bg-white">
+                    <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-1">
+                      <div className="bg-white rounded-xl overflow-hidden">
+                        <VimeoEmbed videoId={story.videoId} />
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="text-md text-center">{story.achievement}</h4>
-                </motion.div>
+                  <h4 className="text-lg font-semibold text-gray-800 text-center mt-6 px-4">
+                    {story.achievement}
+                  </h4>
+                </div>
               ))}
             </div>
-          </motion.div>
-        </div>
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-white/10 rounded-lg px-4 py-1.5 mb-8">
-            <span className="text-sm font-medium">🎯 HOW WE OPERATE</span>
           </div>
-          <h2 className="text-center text-4xl sm:text-6xl font-bold tracking-tighter mb-4">
-            You Could Call Our Formula An &quot;Unfair Advantage&quot;
+        </div>
+
+        {/* Features Section */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center bg-purple-100 border border-purple-200 rounded-full px-4 py-2 mb-8 transition-all duration-300 hover:bg-purple-200">
+            <span className="text-sm font-semibold text-purple-700">
+              🎯 HOW WE OPERATE
+            </span>
+          </div>
+          <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 tracking-tight mb-6">
+            You Could Call Our Formula An
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800">
+              &quot;Unfair Advantage&quot;
+            </span>
           </h2>
-          <p className="text-xl text-white/60">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Or, You Can Claim This Unfair Advantage For Your Own Course
             Business.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-white/20 transition-all"
+              className="group p-8 rounded-2xl bg-white border border-gray-200 hover:border-purple-300 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-12 h-12 bg-[#3e1a84] rounded-lg flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-700 rounded-xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-white/60">{feature.description}</p>
-            </motion.div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
           ))}
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-20">
+          <Link
+            href="/contact"
+            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold rounded-full hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Get Your Unfair Advantage
+          </Link>
         </div>
       </div>
     </section>
