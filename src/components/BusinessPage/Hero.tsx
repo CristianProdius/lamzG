@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+
 import { CourseShowcase } from "./CourseShowcase";
 
 type SectionKey = "saas" | "consulting";
