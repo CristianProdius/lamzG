@@ -459,8 +459,8 @@ export function WhyWorkWithUs() {
           <Separator className="my-8 mx-auto w-24 bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-pink-400" />
 
           <p className="text-lg md:text-xl text-center text-gray-700 max-w-2xl mx-auto font-medium">
-            You'll be working with people who do this full-time — not just talk
-            about it.
+            You&apos;ll be working with people who do this full-time — not just
+            talk about it.
           </p>
         </motion.div>
       </section>
