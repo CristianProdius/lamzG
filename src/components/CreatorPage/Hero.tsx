@@ -27,7 +27,7 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
   }, []);
 
   return (
-    <div className="bg-white text-gray-900 pt-8 md:pt-12 px-4 min-h-screen">
+    <div className="bg-white text-gray-900 pt-8 md:pt-20 px-4 min-h-screen">
       <div className="container relative mx-auto">
         {/* Header Alert */}
         <div className="flex items-center justify-center my-8 px-4 w-full">

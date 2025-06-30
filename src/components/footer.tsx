@@ -30,10 +30,18 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="/business"
+                  href="/saas"
                   className="font-medium text-gray-700 hover:text-gray-900 transition-colors"
                 >
-                  For Businesses
+                  For SaaS
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/consulting"
+                  className="font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  For Consulting
                 </a>
               </li>
               <li>

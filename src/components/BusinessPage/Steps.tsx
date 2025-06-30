@@ -26,7 +26,7 @@ export default function WhatWeTakeCareOf() {
   return (
     <div className="relative bg-white">
       {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-50/30 via-transparent to-purple-50/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-white pointer-events-none" />
 
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
         {/* Header Section */}
@@ -41,7 +41,7 @@ export default function WhatWeTakeCareOf() {
         </div>
 
         {/* Grid Layout - Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
           {images.map((image, idx) => (
             <div
               key={idx}

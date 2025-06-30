@@ -5,9 +5,9 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <div className="py-8 md:py-16 w-full bg-white relative flex flex-col items-center justify-center antialiased">
+    <div className="py-8 md:py-20 w-full bg-white relative flex flex-col items-center justify-center antialiased">
       <div className="max-w-5xl mx-auto px-6 md:px-4">
-        <h1 className="relative z-10 text-3xl sm:text-4xl md:text-6xl text-center font-sans font-bold leading-[1.2] sm:leading-[1.3] text-gray-900">
+        <h1 className="relative z-10 text-3xl sm:text-4xl md:text-6xl text-center font-sans pt-4 font-bold leading-[1.2] sm:leading-[1.3] text-gray-900">
           We Turn Knowledge Into Scalable Digital Products.
         </h1>
         <p></p>

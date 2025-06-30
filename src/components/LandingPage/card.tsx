@@ -13,7 +13,7 @@ export function CardsForLinking() {
         <CardContainer className="inter-var flex-1 flex-grow basis-0">
           <CardBody
             className="bg-white relative group/card hover:shadow-2xl hover:shadow-purple-400/40 hover:cursor-pointer border-gray-200 w-full mx-auto h-auto rounded-xl border"
-            onClick={() => router.push("/business")}
+            onClick={() => router.push("/saas")}
           >
             <div className="p-6 md:px-12 text-center">
               <CardItem

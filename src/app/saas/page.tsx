@@ -1,4 +1,3 @@
-import { CourseShowcase } from "@/components/BusinessPage/CourseShowcase";
 import { Hero } from "@/components/BusinessPage/Hero";
 import WhatWeTakeCareOf from "@/components/BusinessPage/Steps";
 import { WhyCreateCourse } from "@/components/BusinessPage/WhyCreateCourse";
@@ -9,8 +8,8 @@ import { CTA } from "@/components/BusinessPage/CTA";
 export default function Creator() {
   return (
     <>
-      <Hero />
-      <CourseShowcase />
+      <Hero videoVariant="saas" />
+
       <WhatWeTakeCareOf />
       <WhyCreateCourse />
       <WhyWorkWithUs />
