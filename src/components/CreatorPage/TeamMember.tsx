@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 const TeamMember = () => {
   return (
@@ -28,7 +29,9 @@ const TeamMember = () => {
                 <div className="relative">
                   {/* Decorative gradient background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl transform rotate-3 scale-105 opacity-20"></div>
-                  <img
+                  <Image
+                    width={300}
+                    height={300}
                     src="/lamz.webp"
                     alt="Lambros Lazopoulos - CEO"
                     className="relative w-full max-w-[300px] rounded-2xl shadow-lg"

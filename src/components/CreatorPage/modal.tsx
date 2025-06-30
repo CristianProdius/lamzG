@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const VSL_PAGE_URL = "https://lamzcoursecreation.com/vsl";
 const GOOGLE_SHEET_WEBHOOK =
@@ -393,7 +394,9 @@ const Modal = ({
 
             {/* Image */}
             <div className="aspect-video bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl mb-8 overflow-hidden shadow-lg">
-              <img
+              <Image
+                width={600}
+                height={400}
                 src="/image.webp"
                 alt="Business Model Training"
                 className="w-full h-full object-cover"

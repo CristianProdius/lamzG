@@ -11,15 +11,15 @@ const World = dynamic(() => import("../ui/globe").then((m) => m.World), {
 
 const globeConfig = {
   pointSize: 4,
-  globeColor: "#062056",
+  globeColor: "#e0e7ff",
   showAtmosphere: true,
-  atmosphereColor: "#FFFFFF",
+  atmosphereColor: "#4338ca",
   atmosphereAltitude: 0.1,
-  emissive: "#062056",
+  emissive: "#e0e7ff",
   emissiveIntensity: 0.1,
   shininess: 0.9,
-  polygonColor: "rgba(255,255,255,0.7)",
-  ambientLight: "#38bdf8",
+  polygonColor: "rgba(99, 102, 241, 0.7)",
+  ambientLight: "#818cf8",
   directionalLeftLight: "#ffffff",
   directionalTopLight: "#ffffff",
   pointLight: "#ffffff",
@@ -398,7 +398,7 @@ const sampleArcs = [
 
 export function WhyWorkWithUs() {
   return (
-    <div className="relative bg-[linear-gradient(to_top,oklch(0.145_0_0),#200D42_45%,#4f21A1_65%,#a46edb_82%)]">
+    <div className="relative bg-white">
       <section className="max-w-5xl mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -406,22 +406,22 @@ export function WhyWorkWithUs() {
           transition={{ duration: 0.7, ease: [0.4, 0.0, 0.2, 1] }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-6 tracking-tight text-neutral-800 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-6 tracking-tight text-gray-900">
             Why Work With Us?
           </h2>
-          <p className="text-lg md:text-xl text-center text-neutral-600 dark:text-neutral-300 mb-8 max-w-2xl mx-auto font-medium">
-            We Don’t Just Teach Course Creation — We’ve Done It Ourselves (Over
-            and Over Again)
+          <p className="text-lg md:text-xl text-center text-gray-600 mb-8 max-w-2xl mx-auto font-medium">
+            We Don&apos;t Just Teach Course Creation — We&apos;ve Done It
+            Ourselves (Over and Over Again)
           </p>
         </motion.div>
 
-        <Card className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-transparent shadow-[0_8px_32px_0_rgba(31,38,135,0.10)] rounded-3xl hover:scale-[1.015] hover:shadow-[0_12px_40px_0_rgba(80,0,200,0.12)] transition-transform relative overflow-hidden p-1 mb-10">
+        <Card className="bg-white backdrop-blur-xl border border-gray-200 shadow-lg rounded-3xl hover:scale-[1.015] hover:shadow-xl transition-transform relative overflow-hidden p-1 mb-10">
           <CardContent className="pt-10 pb-6 px-6 flex flex-col items-center gap-6">
             <div className="w-full flex justify-center mb-6 relative">
               <div className="w-[320px] h-[320px] md:w-[400px] md:h-[400px] relative z-10">
                 <World data={sampleArcs} globeConfig={globeConfig} />
               </div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] md:w-[440px] md:h-[440px] rounded-full bg-gradient-to-tr from-indigo-400/30 via-fuchsia-400/20 to-pink-400/10 blur-2xl z-0" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] md:w-[440px] md:h-[440px] rounded-full bg-gradient-to-tr from-indigo-200/30 via-purple-200/20 to-pink-200/10 blur-2xl z-0" />
             </div>
 
             <motion.div
@@ -431,10 +431,10 @@ export function WhyWorkWithUs() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <p className="text-xl md:text-2xl font-semibold text-primary mb-2">
+              <p className="text-xl md:text-2xl font-semibold text-indigo-600 mb-2">
                 30+ online courses launched in-house
               </p>
-              <p className="text-base md:text-lg text-neutral-700 dark:text-neutral-200 mb-1">
+              <p className="text-base md:text-lg text-gray-700 mb-1">
                 112,000+ students • 168 countries • 23 niches
               </p>
             </motion.div>
@@ -447,19 +447,19 @@ export function WhyWorkWithUs() {
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <p className="text-base md:text-lg text-center text-neutral-600 dark:text-neutral-300 mb-8 max-w-2xl mx-auto">
-            In addition, we’ve supported{" "}
-            <span className="font-semibold text-primary">
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            In addition, we&apos;ve supported{" "}
+            <span className="font-semibold text-indigo-600">
               over 360 other creators and businesses
             </span>{" "}
             in building their own course-based products — either one-on-one or
-            with our team’s hands-on support.
+            with our team&apos;s hands-on support.
           </p>
 
-          <Separator className="my-8 mx-auto w-24 bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-pink-400 opacity-60" />
+          <Separator className="my-8 mx-auto w-24 bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-pink-400" />
 
-          <p className="text-lg md:text-xl text-center text-neutral-700 dark:text-neutral-200 max-w-2xl mx-auto font-medium">
-            You’ll be working with people who do this full-time — not just talk
+          <p className="text-lg md:text-xl text-center text-gray-700 max-w-2xl mx-auto font-medium">
+            You'll be working with people who do this full-time — not just talk
             about it.
           </p>
         </motion.div>

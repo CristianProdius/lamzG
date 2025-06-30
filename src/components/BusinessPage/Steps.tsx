@@ -1,84 +1,91 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 const images = [
   {
-    src: "/1.jpg",
+    src: "/1.png",
     alt: "Strategic Planning",
-    gradient: "bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800",
   },
   {
-    src: "/2.jpg",
+    src: "/2.png",
     alt: "Video Production",
-    gradient: "bg-gradient-to-br from-fuchsia-600 via-purple-600 to-pink-700",
   },
   {
     src: "/3.png",
     alt: "Hosting & Delivery",
-    gradient: "bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700",
   },
   {
     src: "/4.png",
     alt: "Marketing & Scaling",
-    gradient: "bg-gradient-to-br from-pink-600 via-fuchsia-600 to-purple-700",
   },
 ];
 
 export default function WhatWeTakeCareOf() {
   return (
-    <div className="relative bg-[linear-gradient(to_top,#000,#200D42_45%,#4f21A1_65%)]">
-      <section className="max-w-5xl mx-auto px-4 py-16">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-6 tracking-tight text-white">
-          What we take care of:
-        </h2>
-        <p className="text-lg md:text-xl text-center text-neutral-300 mb-10 max-w-2xl mx-auto font-medium">
-          A Complete Done-For-You Solution — Built for Business Results
-        </p>
-        <Separator className="my-8 mx-auto w-24 bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-pink-400 opacity-60" />
+    <div className="relative bg-white">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-50/30 via-transparent to-purple-50/20 pointer-events-none" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+        {/* Header Section */}
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4 sm:mb-6">
+            What we take care of
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed px-4">
+            A Complete Done-For-You Solution — Built for Business Results
+          </p>
+          <Separator className="mt-6 sm:mt-8 mx-auto w-16 sm:w-24 h-1 bg-gradient-to-r from-purple-400 via-purple-500 to-purple-400" />
+        </div>
+
+        {/* Grid Layout - Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
           {images.map((image, idx) => (
             <div
               key={idx}
-              className={`
-                ${image.gradient}
-                relative overflow-hidden rounded-3xl min-h-[350px]
-                transform transition-transform duration-300 hover:scale-[1.02]
-                shadow-2xl group cursor-pointer
-              `}
+              className="group relative bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Background decorative elements */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-white/5 rounded-full blur-lg"></div>
+              {/* Purple gradient accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 sm:h-2 bg-gradient-to-r from-purple-500 via-purple-400 to-pink-400 z-20" />
 
-              {/* Full width image */}
-              <div className="relative z-10 h-full">
-                <img
+              {/* Image Container - Full height to show entire image */}
+              <div className="relative overflow-hidden bg-gray-100">
+                <Image
+                  width={600}
+                  height={400}
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* Image overlay for better integration */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
-                {/* Step number overlay */}
-                <div className="absolute top-6 left-6 flex items-center justify-center w-12 h-12 bg-white/90 rounded-full backdrop-blur-sm shadow-lg">
-                  <span className="text-xl font-bold text-gray-800">
+                {/* Subtle purple gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent opacity-60" />
+
+                {/* Step number badge */}
+                <div className="absolute top-4 sm:top-6 left-4 sm:left-6 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-white shadow-lg rounded-full">
+                  <span className="text-base sm:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400">
                     {idx + 1}
                   </span>
                 </div>
               </div>
 
-              {/* Subtle grid pattern overlay */}
-              <div
-                className="absolute inset-0 opacity-5"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                }}
-              ></div>
+              {/* Decorative elements */}
+              <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-purple-200/20 rounded-full blur-2xl" />
+              <div className="absolute -top-8 -left-8 w-20 h-20 bg-purple-300/20 rounded-full blur-xl" />
             </div>
           ))}
+        </div>
+
+        {/* Optional CTA section */}
+        <div className="mt-12 sm:mt-16 text-center">
+          <p className="text-base sm:text-lg text-gray-600 mb-6">
+            Ready to transform your expertise into a thriving course business?
+          </p>
+          <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-purple-400 text-white font-semibold rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105 text-sm sm:text-base">
+            Get Started Today
+          </button>
         </div>
       </section>
     </div>
