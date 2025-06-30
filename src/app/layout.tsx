@@ -33,12 +33,12 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
+          <main className="pt-16 md:pt-20">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

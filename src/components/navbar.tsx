@@ -10,16 +10,33 @@ import Image from "next/image";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+
+      // Determine if scrolled
+      setIsScrolled(currentScrollY > 10);
+
+      // Determine visibility
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & scrolled past 100px
+        setIsVisible(false);
+      } else {
+        // Scrolling up or at top
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navLinks = [
     { href: "/creator", label: "For Creators" },
@@ -35,12 +52,10 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg"
-          : "bg-white/80 backdrop-blur-sm"
-      }`}
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+      } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
@@ -48,8 +63,9 @@ const Navbar = () => {
               <Image
                 src="/ccclogo.png" // Replace with your actual logo path
                 alt="Logo"
-                width={48}
-                height={48}
+                width={40}
+                height={40}
+                className="h-10 w-10 object-cover transition-transform duration-200 group-hover:scale-105"
               />
             </div>
           </Link>
