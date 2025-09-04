@@ -90,7 +90,7 @@ export function CourseShowcase({ variant = "saas" }: CourseShowcaseProps) {
           {/* CTA Button */}
           <div className="flex justify-center">
             <Link
-              href="https://calendly.com/lamz/meeting"
+              href="https://calendly.com/lamz/one-on-one-call"
               className="w-full sm:w-auto"
             >
               <Button

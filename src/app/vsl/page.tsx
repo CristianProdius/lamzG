@@ -85,7 +85,7 @@ const VslSection = () => {
                 <div className="relative bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
                   <div className="relative aspect-video rounded-xl md:rounded-2xl overflow-hidden bg-black">
                     <iframe
-                      src="https://player.vimeo.com/video/1052310589?h=a327fa597e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                      src="https://player.vimeo.com/video/1115230490?h=4990abe118&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                       className="absolute top-0 left-0 w-full h-full"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"

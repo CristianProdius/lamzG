@@ -10,7 +10,7 @@ export const CTA = () => {
           Ready to Create a Course That Grows Your Business?
         </h2>
 
-        <Link href="https://calendly.com/lamz/meeting">
+        <Link href="https://calendly.com/lamz/one-on-one-call">
           <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white sm:text-xl py-3 px-4 sm:py-5 sm:px-9 rounded-lg font-semibold inline-flex items-center justify-center gap-1 transform transition-transform duration-200 hover:scale-105 mt-12 shadow-lg hover:shadow-xl">
             <span>Let&apos;s talk about what&apos;s possible.</span>
           </button>
