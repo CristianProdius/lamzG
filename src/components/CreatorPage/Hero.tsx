@@ -68,7 +68,7 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl lg:text-2xl mb-12 text-gray-600 mt-6 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-600 mt-6 max-w-4xl mx-auto leading-relaxed"
           >
             Create and launch your profitable online course in 30 days - no
             following, no ads, guaranteed results
@@ -79,7 +79,7 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="vsl-container relative w-full max-w-4xl mx-auto mb-12"
+            className="vsl-container relative w-full max-w-3xl mx-auto mb-6"
           >
             <div className="relative rounded-2xl p-1 bg-gradient-to-r from-purple-200 via-purple-300 to-purple-200 shadow-2xl">
               <motion.div
@@ -100,9 +100,8 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
               <div className="relative bg-white rounded-2xl p-2">
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 shadow-inner">
                   <iframe
-                    src="https://player.vimeo.com/video/1052329231?h=0540f3a723&badge=0&autopause=0&player_id=0&app_id=58479&muted=false"
+                    src="https://player.vimeo.com/video/1119168646?h=bafd55bd7e&badge=0&autopause=0&player_id=0&app_id=58479&muted=false"
                     className="absolute top-0 left-0 w-full h-full"
-                    frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     title="main"
@@ -118,23 +117,47 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
               </span>
             </div>
           </motion.div>
+
         </div>
 
-        {/* CTA Section */}
+        {/* Calendly Calendar - Full Width Outside Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="w-full mt-8 mb-8 px-4"
+        >
+          <h3 className="text-2xl font-bold text-purple-600 text-center mb-4">
+            Schedule Your Free Discovery Call
+          </h3>
+          <div className="mx-auto max-w-4xl">
+            <div
+              className="relative overflow-hidden rounded-2xl border border-purple-100 bg-white shadow-lg"
+              style={{ height: "680px" }}
+            >
+              <iframe
+                src="https://calendly.com/lamz/discovery-call-yt?embed_type=inline&hide_event_type_details=1&hide_gdpr_banner=1&primary_color=9333ea"
+                title="Discovery call scheduler"
+                style={{
+                  position: "absolute",
+                  top: "-60px",
+                  left: "-60px",
+                  width: "calc(100% + 120px)",
+                  height: "calc(100% + 120px)",
+                  border: "none"
+                }}
+              ></iframe>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Trust indicators */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col items-center justify-center mt-8"
         >
-          <button
-            onClick={onOpenModal}
-            className="bg-purple-600 hover:bg-purple-700 text-white text-lg sm:text-xl py-4 px-8 sm:py-5 sm:px-10 rounded-xl font-semibold inline-flex items-center justify-center gap-2 transform transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            <span>Start Watching Now</span>
-            <ChevronRight className="w-5 h-5" />
-          </button>
-
           {/* Trust indicators */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
             <div className="flex items-center gap-2">
