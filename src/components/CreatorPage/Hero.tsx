@@ -1,5 +1,4 @@
 "use client";
-import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import Player from "@vimeo/player";
@@ -8,7 +7,7 @@ interface HeroSectionProps {
   onOpenModal: () => void;
 }
 
-const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
+const HeroSection = ({ }: HeroSectionProps) => {
   useEffect(() => {
     const iframe = document.querySelector("iframe");
     if (iframe) {
